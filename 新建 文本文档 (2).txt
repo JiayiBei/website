@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Lab31</title>
+</head>
+<body>
+<form action="http:edqaa.com/t/Echo" enctype="application/x-www-form-urlencoded" id="f1" method="post" name="f1" target="_blank">
+	<table align="center" border="0" cellpadding="4" cellspacing="4" style="width:500px;">
+		<caption>
+			Application Form</caption>
+		<tbody>
+			<tr>
+				<td>
+					Student id</td>
+				<td>
+					<input name="sid" type="text" /></td>
+			</tr>
+			<tr>
+				<td>
+					Last name</td>
+				<td>
+					<input name="lm" type="text" /></td>
+			</tr>
+			<tr>
+				<td>
+					First name</td>
+				<td>
+					<input name="fn" type="text" /></td>
+			</tr>
+			<tr>
+				<td>
+					Age</td>
+				<td>
+					<select name="Age" size="1"><option selected="selected" value="">10 years</option><option selected="selected" value="">11 years</option><option selected="selected" value="">12 years</option><option value="10"></option><option value="11"></option><option value="12"></option></select></td>
+			</tr>
+			<tr>
+				<td>
+					Major</td>
+				<td>
+					<input name="major" type="radio" />Major<input checked="checked" name="Math" type="radio" value="Math" />Math</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<input name="Submit" type="button" value="Submit" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		&nbsp;</p>
+</form>
+<p>
+	&nbsp;</p>
+</body>
+</html>
