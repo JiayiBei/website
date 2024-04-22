@@ -1,0 +1,11 @@
+<script>
+   var a=[3,4,5,2,1];
+   for (let i = 0; i < a.length; i++) {  
+    (function(index)
+    {  
+        setTimeout(function()
+       {  
+            document.write(a[index]," ");  
+        }, index*2000);  
+    })(i)};
+</script>
