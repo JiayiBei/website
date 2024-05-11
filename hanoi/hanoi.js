@@ -118,7 +118,6 @@ function movedisk(k) //k-th instruction
         let w =  parseInt(disk.style.width.replace(/px/,''));
         let diff = (w1 - w)/2;
         x1 = (parseInt(x1.replace(/px/,'')) + diff) + 'px';
-
     }
     
     q.push(topid);
