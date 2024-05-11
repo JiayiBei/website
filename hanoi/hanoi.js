@@ -21,17 +21,6 @@ function layer(n,i)
     ele.innerHTML=disk(width,height,i);
     ele.style.backgroundColor='transparent';
     document.body.appendChild(ele);
-    
-    let pillar = document.createElement("div");
-    pillar.style.position = "absolute";
-    pillar.style.width = "20px";
-    pillar.style.height = "500px";
-    pillar.backgroundColor = "pink";
-    pillar.style.borderRadius = "5px";
-    //pillar.className = "pillar";
-    pillar.style.left = (x + TOPWIDTH / 2 - 5) + "px";
-    pillar.style.top = (N*THICKNESS) + "px";
-    document.body.appendChild(pillar);
 }
 
 function tower(n)
@@ -141,9 +130,5 @@ let kftext="@keyframes diskmoveK{0%{left:X;top:Y}\n30%{left:X;top:0px}\n70%{left
     disk.style.top=y1;
 }
 movedisk(0);
-document.getElementById("startButton").addEventListener("click", function () {
-    for (let i = 0; i < instructions.length; i++)
-        setTimeout(function () {
-            movedisk(i);
-        }, i * 1010);
-});
+for(let i=1;i<instructions.length;i++)
+setTimeout('movedisk('+i+')',i*1010);
