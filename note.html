@@ -1,0 +1,39 @@
+<script>
+  
+   let a=[]
+   let associative={id:"D10755505",name:"John"};
+   let y={"id":"D10755505","name":"John"};
+   let z={id:"D10755505","Last name":"John"};
+   let w={"John Smith":2423523,"Scott Cave":239821};
+
+   w["Johnson"]=823905;
+document.write(w["John Smith"]);
+for(let key in w)
+   document.write("key="+key+",value="+w[key]+"<br>");
+//for(let v of w)     document.write("value="+v+"<br>");
+for(let key in w)
+   if(w[key]==328497)
+      document.write(key+"has 328497<br>");
+document.write("size of w="+w.length+"<br>");
+/*var Game={
+   x:1,
+   y:2,
+   move:function(u,v){document.write(Game.x+","+Game.y+"<br>");}
+}
+Game.move(1,2);
+Game.move=function(u,v){}
+setTimeout(functionname,2000);//2000 //scheduled task
+setTimeout(function(){...},bianliang*1500);
+setTimeout("Game.move("+x+","+y+")",2333);
+var a=[3,4,5,2,1];
+for (let i = 0; i < a.length; i++) {  
+    (function(index)
+    {  
+        setTimeout(function()
+       {  
+            document.write(a[index]," ");  
+        }, index*2000);  
+    })(i);
+clearTimeout();
+}*/
+</script>
