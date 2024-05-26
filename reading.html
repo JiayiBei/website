@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendations and Tips</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .book {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .book h3 {
+            margin-top: 0;
+        }
+        .book p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Book Recommendations and Tips</h1>
+    
+    <!-- 书籍推荐表单 -->
+    <form id="bookForm">
+        <label for="title">Name of the book:</label>
+        <input type="text" id="title" name="title" required><br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br>
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre" required>
+            <option value="">Please select genre</option>
+            <option value="Novel">Novel</option>
+            <option value="Biography">Biography</option>
+            <option value="Education">Education</option>
+            <option value="Others">Others</option>
+        </select><br>
+        <!-- 新添加的下拉菜单 -->
+        <div id="biographyType" style="display: none;">
+            <label for="biographyType">Types of biography:</label>
+            <select id="biographyType" name="biographyType">
+                <option value="">Please select the type of biography</option>
+                <option value="Autobiography">Autobiography</option>
+                <option value="Biography">Biography</option>
+            </select><br>
+        </div>
+	<div id="novelType" style="display: none;">
+            <label for="novelType">Types of novel</label>
+            <select id="novelType" name="novelType">
+                <option value="">Please select the type of novel</option>
+                <option value="Literary">Literary</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Speculative">Speculative</option>
+		<option value="Romantic">Romantic</option>
+		<option value="Historical">Historical</option>
+		<option value="Adventure">Adventure</option>
+		<option value="Fantasy">Fantasy</option>
+		<option value="Suspense">Suspense</option>
+            </select><br>
+        </div>
+	<div id="educationType" style="display: none;">
+            <label for="educationType">Types of education</label>
+            <select id="educationType" name="educationType">
+                <option value="">Please select the type of education</option>
+                <option value="Textbook">Textbook</option>
+                <option value="Educational psychology">Educational psychology</option>
+                <option value="Children's books">Children's books</option>
+		<option value="Encyclopedia">Encyclopedia</option>
+		<option value="Reference book">Reference book</option>
+		<option value="Dictionary">Dictionary</option>
+		<option value="Map and geography books">Map and geography books</option>
+		<option value="Science and Technology Handbook">Science and Technology Handbook</option>
+            </select><br>
+        </div>
+
+        <label for="recommendation">Reasons for Recommendation & Insights:</label><br>
+        <textarea id="recommendation" name="recommendation" rows="4" required></textarea><br>
+        <input type="submit" value="Submit a recommendation">
+    </form>
+
+    <!-- 推荐书籍列表 -->
+    <div id="bookList"></div>
+</div>
+
+<script>
+    // 模拟书籍数据
+    const books = [
+        { title: "Lincoln in the bardo", author: "George Saunders", genre: "Novel", recommendation: "Very unique style. A quirky and engaging reading experience." },
+        { title: "三体", author: "刘慈欣", genre: "Science fiction", recommendation: "震撼人心的科幻巨作，极富想象力，推荐给所有喜爱科幻的读者。" }
+    ];
+
+    // 页面加载完毕后显示已有的书籍推荐
+    window.onload = function() {
+        displayBooks();
+    };
+
+    // 显示书籍推荐列表
+    function displayBooks() {
+        const bookList = document.getElementById('bookList');
+        bookList.innerHTML = '';
+        books.forEach(book => {
+            const bookDiv = document.createElement('div');
+            bookDiv.classList.add('book');
+            bookDiv.innerHTML = `
+                <h3>${book.title} - ${book.author}</h3>
+                <p><strong>Genre:</strong>${book.genre}</p>
+                <p><strong>Reasons for Recommendation & Insights:</strong>${book.recommendation}</p>
+            `;
+            bookList.appendChild(bookDiv);
+        });
+    }
+
+    // 提交书籍推荐
+    document.getElementById('bookForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const newBook = {};
+        formData.forEach((value, key) => {
+            newBook[key] = value;
+        });
+        const genre = formData.get('genre');
+        const biographyType = formData.get('biographyType');
+        if (genre === 'Biography' && biographyType) {
+            newBook['genre'] = `${genre} - ${biographyType}`;
+        }
+        books.push(newBook);
+        displayBooks();
+        this.reset();
+
+	
+	const genre1 = formData.get('genre1');
+        const novelType = formData.get('novelType');
+        if (genre1 === 'Novel' && novelType) {
+            newBook['genre1'] = `${genre1} - ${novelType}`;
+        }
+        books.push(newBook);
+        displayBooks();
+        this.reset();
+
+	const genre2 = formData.get('genre2');
+        const educationType = formData.get('educationType');
+        if (genre2 === 'Education' && educationType) {
+            newBook['genre2'] = `${genre2} - ${educationType}`;
+        }
+        books.push(newBook);
+        displayBooks();
+        this.reset();
+
+    });
+
+    // 监听书籍类型选择，显示/隐藏传记类型下拉菜单
+    document.getElementById('genre').addEventListener('change', function() {
+        const biographyType = document.getElementById('biographyType');
+        if (this.value === 'Biography') {
+            biographyType.style.display = 'block';
+        } else {
+            biographyType.style.display = 'none';
+        }
+    });
+   document.getElementById('genre').addEventListener('change', function() {
+        const novelType = document.getElementById('novelType');
+        const biographyType = document.getElementById('biographyType');
+        const educationType = document.getElementById('educationType');
+
+        switch (this.value) {
+            case 'Novel':
+                novelType.style.display = 'block';
+                biographyType.style.display = 'none';
+                educationType.style.display = 'none';
+                break;
+            case 'Biography':
+                novelType.style.display = 'none';
+                biographyType.style.display = 'block';
+                educationType.style.display = 'none';
+                break;
+            case 'Education':
+                novelType.style.display = 'none';
+                biographyType.style.display = 'none';
+                educationType.style.display = 'block';
+                break;
+            default:
+                novelType.style.display = 'none';
+                biographyType.style.display = 'none';
+                educationType.style.display = 'none';
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
